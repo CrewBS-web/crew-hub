@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Services {
+  id           String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name         String
+  description  String
+  price        Decimal @default(0) @db.Decimal(12, 2)
+  senior_price Decimal @default(0) @db.Decimal(12, 2)
+  duration     Int
+}
+
+model Staff {
+  id                String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name              String
+  isSenior          Boolean
+  description_short String
+  description       String
+  images            String
+}
+
+model Locations {
+  id             String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name           String
+  address        String
+  mapLink        String
+  reservationUrl String
+}
+
+model Contacts {
+  id          String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  type        String //rework to enum
+  name        String
+  phoneNumber String
+}
+
+model Articles {
+  id     String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title  String
+  text   String
+  images String[]
+}
