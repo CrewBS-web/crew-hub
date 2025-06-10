@@ -37,3 +37,9 @@ export const insertArticlesSchema = z.object({
   text: z.string().min(3, "Text must be at least 3 characters"),
   images: z.array(z.string()).min(1, "Article must have at least one image")
 });
+
+// Schema for sign in users in
+export const singInFormSchema = z.object({
+  email: z.string().email("Invalid email"),
+  password: z.string().min(6, "Password must be at least 6 symbols")
+});
