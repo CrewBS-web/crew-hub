@@ -19,7 +19,7 @@ const Menu = () => {
       <nav className="flex w-full max-w-xs gap-1">
         <ModeToggle />
       </nav>
-      <nav className="md:hidden">
+      <nav className="md:hidden flex justify-center items-center">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger className="align-middle">
             <EllipsisVertical />

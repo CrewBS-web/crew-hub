@@ -43,8 +43,12 @@ const StaffCard = ({
                 <Image src={images} alt={name} fill className="object-cover" />
               </div>
               <h4 className="font-bold text-l text-center">{name}</h4>
-              <p className="text-gray-400">{isSenior ? "Senior" : "Expert"}</p>
-              <p className="text-xs text-center">{description_short}</p>
+              <p className="text-gray-400 text-xs">
+                {isSenior ? "Senior" : "Expert"}
+              </p>
+              <p className="text-center font-medium text-sm">
+                {description_short}
+              </p>
             </div>
           </Link>
         </div>

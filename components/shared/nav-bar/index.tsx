@@ -23,14 +23,14 @@ const NavBar = () => {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/services" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname === "/services"}>
+            <NavigationMenuLink active={pathname.includes("services")}>
               <span className="font-semibold">Наші послуги</span>
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/staff" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname === "/staff"}>
+            <NavigationMenuLink active={pathname.includes("staff")}>
               <span className="font-semibold">Наші майстри</span>
             </NavigationMenuLink>
           </Link>
@@ -44,7 +44,7 @@ const NavBar = () => {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/blog" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname === "/blog"}>
+            <NavigationMenuLink active={pathname.includes("blog")}>
               <span className="font-semibold">Блог</span>
             </NavigationMenuLink>
           </Link>

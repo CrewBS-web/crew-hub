@@ -42,12 +42,6 @@ const ModeToggle = () => {
         <DropdownMenuLabel>Тема</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem
-          checked={theme === "system"}
-          onClick={() => setTheme("system")}
-        >
-          Системна
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
           checked={theme === "light"}
           onClick={() => setTheme("light")}
         >

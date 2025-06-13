@@ -1,16 +1,18 @@
+import { getLocations } from "@/lib/actions/location.actions";
+
 import InfoSection from "@/components/shared/info-section";
 import Location from "@/components/shared/location";
 import SocialLinks from "@/components/shared/social-links";
 import CallButton from "@/components/ui/call-button";
-import { getLocations } from "@/lib/actions/location.actions";
+import Logo from "@/components/shared/logo";
 
 const Homepage = async () => {
   const locations = await getLocations();
   return (
     <div className="flex flex-col gap-12">
       <div className="flex items-center flex-col gap-6 p-12 border-b-2">
-        <h1 className="text-4xl font-bold">CREW-hub</h1>
-        <p className="text-l text-center">
+        <Logo height={208} width={208} />
+        <p className="text-xl text-center font-semibold">
           Мережа барбершопів де працюють ті, хто знає, що таке чоловічий стиль.
         </p>
         <CallButton />

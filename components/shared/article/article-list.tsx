@@ -15,7 +15,7 @@ interface ArticleListProps {
 const ArticleList = ({ data }: ArticleListProps) => {
   return (
     <div className="my-10">
-      <h2 className="h2-bold mb-4">Блог:</h2>
+      <h2 className="h3-bold mb-4 font-semibold">Блог:</h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data.map((article) => (
           <motion.div

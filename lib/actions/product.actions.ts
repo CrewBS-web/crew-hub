@@ -10,3 +10,11 @@ export async function getServices() {
 
   return convertToPlainObject(data);
 }
+
+export async function deleteService(id: string) {
+  await prisma.services.delete({
+    where: {
+      id: id
+    }
+  });
+}

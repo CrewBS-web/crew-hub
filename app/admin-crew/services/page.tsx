@@ -1,17 +1,17 @@
-import { getServices } from "@/lib/actions/product.actions";
 import ServicesList from "@/components/shared/services/services-list";
+import { getServices } from "@/lib/actions/product.actions";
 
-const Services = async () => {
+const AdminServices = async () => {
   const services = await getServices();
   return (
     <div>
       <ServicesList
         data={services}
         title="Послуги:"
-        isAdmin={false}
+        isAdmin={true}
       ></ServicesList>
     </div>
   );
 };
 
-export default Services;
+export default AdminServices;

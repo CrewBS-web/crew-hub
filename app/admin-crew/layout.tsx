@@ -1,6 +1,4 @@
-import Header from "@/components/shared/header";
-import Footer from "@/components/shared/footer";
-import NavBar from "@/components/shared/nav-bar";
+import AdminNavBar from "@/components/shared/admin/nav-bar";
 
 export default function RootLayout({
   children
@@ -9,10 +7,8 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex h-screen flex-col">
-      <Header />
-      <NavBar />
+      <AdminNavBar />
       <main className="flex-1 wrapper">{children}</main>
-      <Footer />
     </div>
   );
 }
