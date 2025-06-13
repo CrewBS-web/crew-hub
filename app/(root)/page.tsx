@@ -12,7 +12,7 @@ const Homepage = async () => {
     <div className="flex flex-col gap-12">
       <div className="flex items-center flex-col gap-6 p-12 border-b-2">
         <Logo height={208} width={208} />
-        <p className="text-xl text-center font-semibold">
+        <p className="text-lg text-center font-normal">
           Мережа барбершопів де працюють ті, хто знає, що таке чоловічий стиль.
         </p>
         <CallButton />
