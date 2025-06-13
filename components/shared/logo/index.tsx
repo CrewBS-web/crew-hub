@@ -12,7 +12,9 @@ interface LogoProps {
 
 const Logo = ({ height, width }: LogoProps) => {
   const { theme, systemTheme } = useTheme();
-  const [currentSrc, setCurrentSrc] = useState<string | null>(null);
+  const [currentSrc, setCurrentSrc] = useState<string | null>(
+    "/images/CREW.png"
+  );
 
   useEffect(() => {
     if (theme) {
@@ -38,7 +40,7 @@ const Logo = ({ height, width }: LogoProps) => {
         height={height}
         width={width}
         priority={true}
-        style={{ borderRadius: "10px" }}
+        style={{ borderRadius: "10px", objectFit: "cover" }}
       />
     </div>
   );
