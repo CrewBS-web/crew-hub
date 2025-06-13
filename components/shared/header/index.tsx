@@ -10,9 +10,6 @@ const Header = () => {
         <div className="flex-start">
           <Link href="/" className="flex-start">
             <Logo height={88} width={88} />
-            {/* <span className="hidden lg:block font-bold text-2xl ml-3">
-              {APP_NAME}
-            </span> */}
           </Link>
         </div>
         <div className="flex flex-row">
