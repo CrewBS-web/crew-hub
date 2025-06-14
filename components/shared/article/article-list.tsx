@@ -41,7 +41,7 @@ const ArticleList = ({ data }: ArticleListProps) => {
                 />
               </div>
               <div className="p-4 flex-grow">
-                <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
                   {article.title}
                 </h3>
               </div>
