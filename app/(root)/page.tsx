@@ -27,7 +27,7 @@ const Homepage = async () => {
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-45 z-10  min-h-96" />
         <div className="relative z-10 flex items-center justify-center flex-col gap-6 p-12 bg-black/50 min-h-96">
           <Logo height={208} width={208} fixColor={true} />
-          <p className="text-lg text-center font-normal text-white">
+          <p className="text-lg text-center font-semibold text-white">
             Мережа барбершопів де працюють ті, хто знає, що таке чоловічий
             стиль.
           </p>

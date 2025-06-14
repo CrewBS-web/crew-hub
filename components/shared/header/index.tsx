@@ -5,7 +5,7 @@ import Logo from "../logo";
 
 const Header = () => {
   return (
-    <header className="w-full border-b fixed top-0 z-50 bg-[#FFF] dark:bg-[#0f0c1f]">
+    <header className="w-full border-b-2 fixed top-0 z-50 bg-[#FFF] dark:bg-[#0f0c1f]">
       <div className="wrapper flex-between">
         <div className="flex-start">
           <Link href="/" className="flex-start">

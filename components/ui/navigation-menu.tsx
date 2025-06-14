@@ -18,7 +18,7 @@ function NavigationMenu({
       data-slot="navigation-menu"
       data-viewport={viewport}
       className={cn(
-        "hidden p-4 md:flex group/navigation-menu relative w-full items-center justify-center border-b border-#e2e8f0",
+        "hidden p-4 md:flex group/navigation-menu relative w-full items-center justify-center border-b-2 border-#e2e8f0",
         className
       )}
       {...props}
