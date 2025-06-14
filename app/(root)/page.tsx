@@ -2,9 +2,8 @@ import { getLocations } from "@/lib/actions/location.actions";
 
 import InfoSection from "@/components/shared/info-section";
 import Location from "@/components/shared/location";
-import SocialLinks from "@/components/shared/social-links";
-import CallButton from "@/components/ui/call-button";
 import Logo from "@/components/shared/logo";
+import ContactSection from "@/components/shared/contact-section";
 
 const Homepage = async () => {
   const locations = await getLocations();
@@ -34,14 +33,7 @@ const Homepage = async () => {
           </p>
         </div>
       </div>
-      <div className="flex w-full flex-col items-center justify-center p-8 border-t-2 border-b-2 gap-6">
-        <h3 className="text-lg font-normal text-center">
-          Запишіться до провідних майстрів Ужгорода
-        </h3>
-        <CallButton />
-        <SocialLinks />
-      </div>
-
+      <ContactSection />
       <InfoSection />
       <div className="pt-8 border-t-1 border-grey">
         <h2 className="text-xl font-bold">Де нас знайти:</h2>
