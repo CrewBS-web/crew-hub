@@ -10,14 +10,38 @@ const Homepage = async () => {
   const locations = await getLocations();
   return (
     <div className="flex flex-col gap-12">
-      <div className="flex items-center flex-col gap-6 p-12 border-b-2">
-        <Logo height={208} width={208} />
-        <p className="text-lg text-center font-normal">
-          Мережа барбершопів де працюють ті, хто знає, що таке чоловічий стиль.
-        </p>
+      <div className="relative overflow-hidden rounded-lg min-h-96">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="
+            absolute top-0 left-0 w-full h-full object-cover z-0
+            scale-[1.1] md:scale-[1] xl:scale-[1]
+            object-[center_60%]
+            rounded-lg
+          "
+        >
+          <source src="/images/crew-info-vid.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-45 z-10  min-h-96" />
+        <div className="relative z-10 flex items-center justify-center flex-col gap-6 p-12 border-b-2 bg-black/50 min-h-96">
+          <Logo height={208} width={208} fixColor={true} />
+          <p className="text-lg text-center font-normal text-white">
+            Мережа барбершопів де працюють ті, хто знає, що таке чоловічий
+            стиль.
+          </p>
+        </div>
+      </div>
+      <div className="flex w-full flex-col items-center justify-center p-8 border-t-2 border-b-2 gap-6">
+        <h3 className="text-lg font-normal text-center">
+          Запишіться до провідних майстрів Ужгорода
+        </h3>
         <CallButton />
         <SocialLinks />
       </div>
+
       <InfoSection />
       <div className="pt-8 border-t-1 border-grey">
         <h2 className="text-xl font-bold">Де нас знайти:</h2>

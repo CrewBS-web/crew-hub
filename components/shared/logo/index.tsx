@@ -8,15 +8,21 @@ import Image from "next/image";
 interface LogoProps {
   height: number;
   width: number;
+  fixColor: boolean;
 }
 
-const Logo = ({ height, width }: LogoProps) => {
+const Logo = ({ height, width, fixColor }: LogoProps) => {
   const { theme, systemTheme } = useTheme();
   const [currentSrc, setCurrentSrc] = useState<string | null>(
-    "/images/CREW.png"
+    "/images/CREW-white.png"
   );
 
   useEffect(() => {
+    if (fixColor) {
+      setCurrentSrc("/images/CREW-white.png");
+      return;
+    }
+
     if (theme) {
       setCurrentSrc(
         theme === "dark" ? "/images/CREW-white.png" : "/images/CREW.png"
@@ -26,7 +32,7 @@ const Logo = ({ height, width }: LogoProps) => {
         systemTheme === "dark" ? "/images/CREW-white.png" : "/images/CREW.png"
       );
     }
-  }, [theme, systemTheme]);
+  }, [theme, systemTheme, fixColor]);
 
   if (!currentSrc) {
     return null;

@@ -9,8 +9,8 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex h-screen flex-col">
-      <Header />
       <div className="mt-18">
+        <Header />
         <NavBar />
         <main className="flex-1 wrapper">{children}</main>
       </div>

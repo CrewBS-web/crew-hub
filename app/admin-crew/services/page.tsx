@@ -1,15 +1,11 @@
-import ServicesList from "@/components/shared/services/services-list";
+import AdminServicesView from "@/components/shared/admin/service/admin-service";
 import { getServices } from "@/lib/actions/product.actions";
 
 const AdminServices = async () => {
   const services = await getServices();
   return (
     <div>
-      <ServicesList
-        data={services}
-        title="Послуги:"
-        isAdmin={true}
-      ></ServicesList>
+      <AdminServicesView services={services} />
     </div>
   );
 };
