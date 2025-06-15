@@ -7,7 +7,11 @@ import { Service } from "@/types";
 // Get services
 
 export async function getServices() {
-  const data = await prisma.services.findMany();
+  const data = await prisma.services.findMany({
+    orderBy: {
+      name: "asc"
+    }
+  });
 
   return convertToPlainObject(data);
 }
@@ -21,7 +25,6 @@ export async function deleteService(id: string) {
 }
 
 export async function createService(service: Service) {
-  debugger;
   await prisma.services.create({
     data: {
       ...service

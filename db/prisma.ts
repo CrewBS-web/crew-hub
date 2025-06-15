@@ -14,19 +14,4 @@ const connectionString = `${process.env.DATABASE_URL}`;
 const adapter = new PrismaNeon({ connectionString });
 
 // Extends the PrismaClient with a custom result transformer to convert the price field to strings.
-export const prisma = new PrismaClient({ adapter }).$extends({
-  result: {
-    services: {
-      price: {
-        compute(service) {
-          return service.price.toString();
-        }
-      },
-      senior_price: {
-        compute(service) {
-          return service.senior_price.toString();
-        }
-      }
-    }
-  }
-});
+export const prisma = new PrismaClient({ adapter });

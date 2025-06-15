@@ -9,12 +9,16 @@ import {
 } from "@/components/ui/navigation-menu";
 import { usePathname } from "next/navigation";
 import ExitButton from "@/app/admin-crew/exit-button";
+import Logo from "../logo";
 
 const AdminNavBar = () => {
   const pathname = usePathname();
   return (
     <NavigationMenu className="flex justify-between">
-      <h2 className="text-2xl font-bold">CREW</h2>
+      <div className="text-center">
+        <Logo height={68} width={68} fixColor={false} /> Admin
+      </div>
+
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/admin-crew/services" legacyBehavior passHref>
@@ -34,6 +38,13 @@ const AdminNavBar = () => {
           <Link href="/admin-crew/blog" legacyBehavior passHref>
             <NavigationMenuLink active={pathname === "/admin-crew/blog"}>
               <span className="font-semibold">Блог</span>
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/admin-crew/location" legacyBehavior passHref>
+            <NavigationMenuLink active={pathname === "/admin-crew/location"}>
+              <span className="font-semibold">Локації</span>
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

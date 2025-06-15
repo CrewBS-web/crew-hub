@@ -27,8 +27,8 @@ export const insertServicesSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
   description: z.string().min(3, "Description must be at least 3 characters"),
   duration: z.coerce.number(),
-  price: currency,
-  senior_price: currency
+  price: z.number(),
+  senior_price: z.number()
 });
 
 // Schema for inserting article
@@ -38,8 +38,19 @@ export const insertArticlesSchema = z.object({
   images: z.array(z.string()).min(1, "Article must have at least one image")
 });
 
-// Schema for sign in users in
+// Schema for sign in users
 export const singInFormSchema = z.object({
   email: z.string().email("Invalid email"),
   password: z.string().min(6, "Password must be at least 6 symbols")
+});
+
+// Schema for inserting Staff
+export const insertStaffSchema = z.object({
+  name: z.string().min(3, "Name must be at least 3 characters"),
+  description: z.string().min(3, "Description must be at least 3 characters"),
+  description_short: z
+    .string()
+    .min(3, "Description must be at least 3 characters"),
+  isSenior: z.boolean(),
+  images: z.string().min(6, "Password must be at least 6 symbols")
 });

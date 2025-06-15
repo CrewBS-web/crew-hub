@@ -3,49 +3,50 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
-  deleteService,
-  updateService,
-  createService
-} from "@/lib/actions/product.actions";
-import { Service } from "@/types";
-import ServicesList from "@/components/shared/services/services-list";
-import ServiceEditDialog from "./service-edit-dialog";
+  updateStaff,
+  createStaff,
+  deleteStaff
+} from "@/lib/actions/staff.actions";
+import { Staff } from "@/types";
 import { Button } from "@/components/ui/button";
 import { CirclePlus } from "lucide-react";
 
+import StaffEditDialog from "./staff-edit-dialog";
+import StaffList from "../../staff/staff-list";
+
 interface AdminServicesProps {
-  services: Service[];
+  staff: Staff[];
 }
 
-export default function AdminServicesView({ services }: AdminServicesProps) {
-  const [editService, setEditService] = useState<Service | null>(null);
+export default function AdminStaffView({ staff }: AdminServicesProps) {
+  const [editStaff, setEditStaff] = useState<Staff | null>(null);
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [isNew, setIsNew] = useState(false);
 
   const router = useRouter();
 
-  const emptyService = {
+  const emptyStaff: Omit<Staff, "id"> = {
     name: "",
     description: "",
-    duration: 0,
-    price: 0,
-    senior_price: 0
+    description_short: "",
+    isSenior: false,
+    images: ""
   };
 
   const handleDelete = (id: string) => {
     if (isPending) return;
     startTransition(() => {
-      deleteService(id).then(() => {
+      deleteStaff(id).then(() => {
         router.refresh();
       });
     });
   };
 
-  const handleEdit = (service: Service) => {
+  const handleEdit = (staff: Staff) => {
     setIsNew(false);
-    setEditService(service);
-    if (!service.id) {
+    setEditStaff(staff);
+    if (!staff.id) {
       setIsNew(true);
     }
     setOpen(true);
@@ -53,12 +54,12 @@ export default function AdminServicesView({ services }: AdminServicesProps) {
 
   const handleSave = async () => {
     setOpen(false);
-    if (!isNew && editService) {
-      updateService(editService).then(() => {
+    if (!isNew && editStaff) {
+      updateStaff(editStaff).then(() => {
         router.refresh();
       });
-    } else if (isNew && editService) {
-      createService(editService).then(() => {
+    } else if (isNew && editStaff) {
+      createStaff(editStaff).then(() => {
         router.refresh();
       });
     }
@@ -66,25 +67,21 @@ export default function AdminServicesView({ services }: AdminServicesProps) {
 
   return (
     <div className="flex flex-col justify-center items-center p-12">
-      <Button
-        onClick={() => handleEdit(emptyService as Service)}
-        className="w-1/3"
-      >
+      <Button onClick={() => handleEdit(emptyStaff as Staff)} className="w-1/3">
         <CirclePlus />
-        Додати послугу
+        Додати майстра
       </Button>
-      <ServicesList
-        data={services}
-        title="Послуги:"
+      <StaffList
+        data={staff}
         isAdmin={true}
         onDelete={handleDelete}
         onEdit={handleEdit}
       />
-      <ServiceEditDialog
+      <StaffEditDialog
         open={open}
         setOpen={setOpen}
-        editService={editService}
-        setEditService={setEditService}
+        editStaff={editStaff}
+        setEditStaff={setEditStaff}
         handleSave={handleSave}
       />
     </div>
