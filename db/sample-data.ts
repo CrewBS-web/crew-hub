@@ -111,54 +111,54 @@ const sampleData = {
       name: "Стрижка класична",
       description:
         "Класична чоловіча стрижка з використанням ножиць та машинки.",
-      price: 350.0,
-      senior_price: 400.0,
+      price: 350,
+      senior_price: 400,
       duration: 60
     },
     {
       name: "Гоління небезпечною бритвою",
       description:
         "Традиційне вологе гоління небезпечною бритвою з гарячими рушниками.",
-      price: 300.0,
-      senior_price: 400.0,
+      price: 300,
+      senior_price: 400,
       duration: 30
     },
     {
       name: "Стрижка бороди",
       description:
         "Формування та догляд за бородою із застосуванням професійної косметики.",
-      price: 250.0,
-      senior_price: 400.0,
+      price: 250,
+      senior_price: 400,
       duration: 30
     },
     {
       name: "Камуфлювання сивини",
       description: "М'яке тонування волосся для природного вигляду без сивини.",
-      price: 400.0,
-      senior_price: 400.0,
+      price: 400,
+      senior_price: 400,
       duration: 30
     },
     {
       name: "Дитяча стрижка",
       description: "Весела та комфортна стрижка для дітей до 12 років.",
-      price: 300.0,
-      senior_price: 400.0,
+      price: 300,
+      senior_price: 400,
       duration: 60
     },
     {
       name: "Комплекс: стрижка + борода",
       description:
         "Повний образ: чоловіча стрижка разом із доглядом за бородою.",
-      price: 550.0,
-      senior_price: 400.0,
+      price: 550,
+      senior_price: 400,
       duration: 90
     },
     {
       name: "Укладання волосся",
       description:
         "Професійне укладання волосся з використанням засобів фіксації.",
-      price: 150.0,
-      senior_price: 400.0,
+      price: 150,
+      senior_price: 400,
       duration: 30
     }
   ],
