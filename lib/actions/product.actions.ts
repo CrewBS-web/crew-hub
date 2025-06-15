@@ -3,6 +3,7 @@
 import { prisma } from "@/db/prisma";
 import { convertToPlainObject } from "../utils";
 import { Service } from "@/types";
+import { revalidatePath } from "next/cache";
 
 // Get services
 
@@ -22,6 +23,8 @@ export async function deleteService(id: string) {
       id: id
     }
   });
+  revalidatePath("/admin-crew/services");
+  revalidatePath("/services");
 }
 
 export async function createService(service: Service) {
