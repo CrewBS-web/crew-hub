@@ -33,6 +33,8 @@ export async function createService(service: Service) {
       ...service
     }
   });
+  revalidatePath("/admin-crew/services");
+  revalidatePath("/services");
 }
 
 export async function updateService(service: Service) {
@@ -44,4 +46,6 @@ export async function updateService(service: Service) {
       ...service
     }
   });
+  revalidatePath("/admin-crew/services");
+  revalidatePath("/services");
 }
