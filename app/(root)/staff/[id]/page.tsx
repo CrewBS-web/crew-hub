@@ -14,6 +14,10 @@ const StaffPage = async ({ params }: StaffPageProps) => {
 
   if (!staff) return <NotFoundPage />;
 
+  let roleLabel = "Експерт";
+  if (staff.isArtDirector) roleLabel = "Арт директор";
+  else if (staff.isSenior) roleLabel = "Старший експерт";
+
   return (
     <div>
       <BackButton />
@@ -29,9 +33,7 @@ const StaffPage = async ({ params }: StaffPageProps) => {
           </div>
           <div className="flex flex-col justify-center text-center md:text-left">
             <h1 className="text-3xl font-bold mb-2">{staff.name}</h1>
-            <p className="text-gray-500 mb-2">
-              {staff.isSenior ? "Senior" : "Expert"}
-            </p>
+            <p className="text-gray-500 mb-2">{roleLabel}</p>
           </div>
         </div>
         <p className="text-lg">{staff.description}</p>

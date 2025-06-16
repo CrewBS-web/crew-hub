@@ -3,11 +3,16 @@
 import { prisma } from "@/db/prisma";
 import { convertToPlainObject } from "../utils";
 import { Staff } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 // Get Staff
 
 export async function getStaff() {
-  const data = await prisma.staff.findMany();
+  const data = await prisma.staff.findMany({
+    orderBy: {
+      name: "asc"
+    }
+  });
 
   return convertToPlainObject(data);
 }
@@ -26,6 +31,8 @@ export async function deleteStaff(id: string) {
       id: id
     }
   });
+  revalidatePath("/admin-crew/staff");
+  revalidatePath("/staff");
 }
 
 export async function createStaff(staff: Staff) {
@@ -34,6 +41,8 @@ export async function createStaff(staff: Staff) {
       ...staff
     }
   });
+  revalidatePath("/admin-crew/staff");
+  revalidatePath("/staff");
 }
 
 export async function updateStaff(staff: Staff) {
@@ -45,4 +54,6 @@ export async function updateStaff(staff: Staff) {
       ...staff
     }
   });
+  revalidatePath("/admin-crew/staff");
+  revalidatePath("/staff");
 }

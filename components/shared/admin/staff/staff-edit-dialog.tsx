@@ -1,3 +1,6 @@
+"use client";
+
+import { Staff } from "@prisma/client";
 import {
   Dialog,
   DialogContent,
@@ -8,8 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Staff } from "@prisma/client";
-import { Checkbox } from "@radix-ui/react-checkbox";
+import { Checkbox } from "@/components/ui/checkbox";
+import { UploadButton } from "@/lib/uploadthings";
 
 interface StaffEditDialogProps {
   open: boolean;
@@ -26,6 +29,7 @@ const StaffEditDialog = ({
   setEditStaff,
   handleSave
 }: StaffEditDialogProps) => {
+  //const image = form.watch('')
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -91,17 +95,51 @@ const StaffEditDialog = ({
                 placeholder="Опис послуги..."
               />
             </div>
-            <div>
-              <Label htmlFor="desc">Кваліфікація Senior</Label>
-              <Checkbox
-                id="desc"
-                checked={editStaff.isSenior}
-                onCheckedChange={(checked) =>
+            <div className="flex gap-4 items-center">
+              <div className="flex justify-start gap-2">
+                <Label htmlFor="isArtDirector">Арт директор</Label>
+                <Checkbox
+                  id="isArtDirector"
+                  checked={editStaff.isArtDirector}
+                  onCheckedChange={(checked) => {
+                    setEditStaff({
+                      ...editStaff,
+                      isArtDirector: Boolean(checked)
+                    });
+                  }}
+                />
+              </div>
+              {!editStaff.isArtDirector && (
+                <div className="flex justify-start gap-2">
+                  <Label htmlFor="isSenior">Кваліфікація старший експерт</Label>
+                  <Checkbox
+                    id="isSenior"
+                    checked={editStaff.isSenior}
+                    onCheckedChange={(checked) =>
+                      setEditStaff({
+                        ...editStaff,
+                        isSenior: Boolean(checked)
+                      })
+                    }
+                  />
+                </div>
+              )}
+            </div>
+
+            <div className="flex justify-start gap-2">
+              <Label htmlFor="desc">Фото</Label>
+              <UploadButton
+                endpoint="imageUploader"
+                onClientUploadComplete={(res) => {
+                  console.log("Files: ", res);
                   setEditStaff({
                     ...editStaff,
-                    isSenior: Boolean(checked)
-                  })
-                }
+                    images: res[0].ufsUrl
+                  });
+                }}
+                onUploadError={(error: Error) => {
+                  alert(`ERROR! ${error.message}`);
+                }}
               />
             </div>
 

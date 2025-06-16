@@ -52,5 +52,6 @@ export const insertStaffSchema = z.object({
     .string()
     .min(3, "Description must be at least 3 characters"),
   isSenior: z.boolean(),
+  isArtDirector: z.boolean(),
   images: z.string().min(6, "Password must be at least 6 symbols")
 });

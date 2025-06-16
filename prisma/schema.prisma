@@ -21,6 +21,7 @@ model Staff {
   id                String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name              String
   isSenior          Boolean
+  isArtDirector     Boolean
   description_short String
   description       String
   images            String

@@ -31,6 +31,7 @@ export default function AdminStaffView({ staff }: AdminServicesProps) {
     description: "",
     description_short: "",
     isSenior: false,
+    isArtDirector: false,
     images: ""
   };
 
@@ -54,6 +55,7 @@ export default function AdminStaffView({ staff }: AdminServicesProps) {
 
   const handleSave = async () => {
     setOpen(false);
+    if (editStaff?.isArtDirector) editStaff.isSenior = true;
     if (!isNew && editStaff) {
       updateStaff(editStaff).then(() => {
         router.refresh();

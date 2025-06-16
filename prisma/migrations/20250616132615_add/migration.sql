@@ -15,6 +15,7 @@ CREATE TABLE "Staff" (
     "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "name" TEXT NOT NULL,
     "isSenior" BOOLEAN NOT NULL,
+    "isArtDirector" BOOLEAN NOT NULL,
     "description_short" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "images" TEXT NOT NULL,
