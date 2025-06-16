@@ -18,7 +18,7 @@ export async function deleteLocation(id: string) {
     }
   });
   revalidatePath("/");
-  revalidatePath("/locations");
+  revalidatePath("/admin-crew/location");
 }
 
 export async function createLocation(location: Location) {
@@ -28,7 +28,7 @@ export async function createLocation(location: Location) {
     }
   });
   revalidatePath("/");
-  revalidatePath("/locations");
+  revalidatePath("/admin-crew/location");
 }
 
 export async function updateLocation(location: Location) {
@@ -41,5 +41,5 @@ export async function updateLocation(location: Location) {
     }
   });
   revalidatePath("/");
-  revalidatePath("/locations");
+  revalidatePath("/admin-crew/location");
 }
