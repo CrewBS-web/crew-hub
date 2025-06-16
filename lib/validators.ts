@@ -55,3 +55,10 @@ export const insertStaffSchema = z.object({
   isArtDirector: z.boolean(),
   images: z.string().min(6, "Password must be at least 6 symbols")
 });
+
+export const insertLocationSchema = z.object({
+  name: z.string().min(3, "Name must be at least 3 characters"),
+  mapLink: z.string().min(3, "Name must be at least 3 characters"),
+  address: z.string().min(3, "Name must be at least 3 characters"),
+  reservationUrl: z.string().min(3, "Name must be at least 3 characters")
+});

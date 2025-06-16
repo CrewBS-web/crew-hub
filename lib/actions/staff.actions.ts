@@ -5,8 +5,6 @@ import { convertToPlainObject } from "../utils";
 import { Staff } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
-// Get Staff
-
 export async function getStaff() {
   const data = await prisma.staff.findMany({
     orderBy: {

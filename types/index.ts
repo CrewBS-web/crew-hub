@@ -2,7 +2,8 @@ import { z } from "zod";
 import {
   insertArticlesSchema,
   insertServicesSchema,
-  insertStaffSchema
+  insertStaffSchema,
+  insertLocationSchema
 } from "@/lib/validators";
 
 export type Service = z.infer<typeof insertServicesSchema> & {
@@ -14,5 +15,9 @@ export type Staff = z.infer<typeof insertStaffSchema> & {
 };
 
 export type Article = z.infer<typeof insertArticlesSchema> & {
+  id: string;
+};
+
+export type Location = z.infer<typeof insertLocationSchema> & {
   id: string;
 };

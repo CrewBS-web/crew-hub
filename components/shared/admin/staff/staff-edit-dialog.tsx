@@ -146,7 +146,7 @@ const StaffEditDialog = ({
                   }}
                   appearance={{
                     button:
-                      "bg-black dark:bg-white text-white dark:text-black rounded-md px-4 py-2 hover:bg-blue-600 cursor-pointer"
+                      "bg-black dark:bg-white text-white dark:text-black rounded-md px-4 py-2 cursor-pointer"
                   }}
                   content={{
                     button: ({ isUploading }) =>
