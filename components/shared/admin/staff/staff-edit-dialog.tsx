@@ -14,6 +14,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { UploadButton } from "@/lib/uploadthings";
 
+import Image from "next/image";
+
 interface StaffEditDialogProps {
   open: boolean;
   setOpen: (state: boolean) => void;
@@ -92,7 +94,7 @@ const StaffEditDialog = ({
                   })
                 }
                 rows={4}
-                placeholder="Опис послуги..."
+                placeholder="Опис майстра"
               />
             </div>
             <div className="flex gap-4 items-center">
@@ -126,23 +128,45 @@ const StaffEditDialog = ({
               )}
             </div>
 
-            <div className="flex justify-start gap-2">
-              <Label htmlFor="desc">Фото</Label>
-              <UploadButton
-                endpoint="imageUploader"
-                onClientUploadComplete={(res) => {
-                  console.log("Files: ", res);
-                  setEditStaff({
-                    ...editStaff,
-                    images: res[0].ufsUrl
-                  });
-                }}
-                onUploadError={(error: Error) => {
-                  alert(`ERROR! ${error.message}`);
-                }}
-              />
+            <div className="flex flex-col justify-start gap-2">
+              {" "}
+              <Label htmlFor="staff-image">Фото</Label>
+              <div className="flex flex-col justify-center items-center border-gray border-2 p-4 gap-2 rounded-lg">
+                <UploadButton
+                  endpoint="imageUploader"
+                  onClientUploadComplete={(res) => {
+                    console.log("Files: ", res);
+                    setEditStaff({
+                      ...editStaff,
+                      images: res[0].ufsUrl
+                    });
+                  }}
+                  onUploadError={(error: Error) => {
+                    alert(`ERROR! ${error.message}`);
+                  }}
+                  appearance={{
+                    button:
+                      "bg-black dark:bg-white text-white dark:text-black rounded-md px-4 py-2 hover:bg-blue-600 cursor-pointer"
+                  }}
+                  content={{
+                    button: ({ isUploading }) =>
+                      isUploading ? "Завантаження..." : "Оберіть файл"
+                  }}
+                />
+                {editStaff.images && (
+                  <div className="relative w-48 h-48 mb-4 border rounded-md overflow-hidden">
+                    <Image
+                      src={editStaff.images}
+                      alt="Перегляд"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-md"
+                      priority
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-
             <Button type="submit" className="mt-4">
               Зберігти
             </Button>
