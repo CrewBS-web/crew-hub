@@ -20,10 +20,9 @@ const ImageViewer = ({ images }: ImageViewerProps) => {
           <DialogTrigger asChild>
             <div
               onClick={() => setActiveImage(src)}
-              className={`
-            cursor-pointer rounded overflow-hidden shadow hover:scale-105 transition-transform
-            ${index === 0 ? "row-span-2 h-full" : "h-full"}
-          `}
+              className={
+                "cursor-pointer rounded overflow-hidden shadow hover:scale-105 transition-transform row-span-2 h-full"
+              }
             >
               <Image
                 src={`${src}.jpg`}

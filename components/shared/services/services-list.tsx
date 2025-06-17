@@ -14,13 +14,7 @@ interface Props {
   onDelete?: (id: string) => void;
 }
 
-export default function ServicesList({
-  data,
-  title,
-  isAdmin,
-  onEdit,
-  onDelete
-}: Props) {
+const ServicesList = ({ data, title, isAdmin, onEdit, onDelete }: Props) => {
   return (
     <div className="my-10">
       <h2 className="h3-bold mb-4 font-semibold">{title}</h2>
@@ -54,4 +48,6 @@ export default function ServicesList({
       )}
     </div>
   );
-}
+};
+
+export default ServicesList;

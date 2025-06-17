@@ -56,6 +56,7 @@ export const insertStaffSchema = z.object({
   images: z.string().min(6, "Password must be at least 6 symbols")
 });
 
+// Schema for inserting Location
 export const insertLocationSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
   mapLink: z.string().min(3, "Name must be at least 3 characters"),
