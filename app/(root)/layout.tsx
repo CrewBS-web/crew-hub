@@ -12,7 +12,6 @@ export default function RootLayout({
       <Header />
       <NavBar />
       <main className="flex-1 wrapper flex-grow">{children}</main>
-
       <Footer />
     </div>
   );
