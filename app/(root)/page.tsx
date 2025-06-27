@@ -37,7 +37,7 @@ const Homepage = async () => {
       <InfoSection />
       <div className="pt-8 border-t-1 border-grey">
         <h2 className="text-xl font-bold">Де нас знайти:</h2>
-        <div className="py-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="py-4 grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-3">
           {locations.map((l, index) => (
             <Location
               key={index}
