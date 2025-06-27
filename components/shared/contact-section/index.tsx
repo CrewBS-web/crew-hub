@@ -14,7 +14,7 @@ const ContactSection = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <motion.h3
-          className="text-lg font-normal text-center overflow-hidden whitespace-nowrap"
+          className="text-lg font-normal text-center block w-full overflow-hidden whitespace-normal sm:whitespace-nowrap"
           initial="hidden"
           animate="visible"
           variants={{
