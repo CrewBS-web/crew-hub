@@ -22,7 +22,7 @@ const SocialLinks = () => {
       >
         <FaWhatsapp className="w-6 h-6" />
       </Link>
-      <Link href={""} target="_blank">
+      <Link href={"viber://chat?number=%2B380967201181"} target="_blank">
         <FaViber className="w-6 h-6" />
       </Link>
     </div>

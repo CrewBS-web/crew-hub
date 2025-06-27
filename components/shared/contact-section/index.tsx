@@ -13,9 +13,25 @@ const ContactSection = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <h3 className="text-lg font-normal text-center">
-          Запишіться до провідних майстрів Ужгорода
-        </h3>
+        <motion.h3
+          className="text-lg font-normal text-center overflow-hidden whitespace-nowrap"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: { transition: { staggerChildren: 0.05 } }
+          }}
+        >
+          {"Запишіться до провідних майстрів Ужгорода"
+            .split("")
+            .map((char, idx) => (
+              <motion.span
+                key={idx}
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+              >
+                {char}
+              </motion.span>
+            ))}
+        </motion.h3>
         <CallButton />
         <SocialLinks />
       </motion.div>
