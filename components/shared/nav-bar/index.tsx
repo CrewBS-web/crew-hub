@@ -21,13 +21,13 @@ const NavBar = () => {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        {/* <NavigationMenuItem>
+        <NavigationMenuItem>
           <Link href="/services" legacyBehavior passHref>
             <NavigationMenuLink active={pathname.includes("services")}>
               <span className="font-semibold">Наші послуги</span>
             </NavigationMenuLink>
           </Link>
-        </NavigationMenuItem> */}
+        </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/staff" legacyBehavior passHref>
             <NavigationMenuLink active={pathname.includes("staff")}>

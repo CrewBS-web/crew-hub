@@ -1,16 +1,15 @@
-// import { getServices } from "@/lib/actions/product.actions";
-// import ServicesList from "@/components/shared/services/services-list";
+import { getServices } from "@/lib/actions/product.actions";
+import ServicesList from "@/components/shared/services/services-list";
 
 const Services = async () => {
-  // const services = await getServices();
+  const services = await getServices();
   return (
     <div>
-      In Progress
-      {/* <ServicesList
+      <ServicesList
         data={services}
         title="Послуги:"
         isAdmin={false}
-      ></ServicesList> */}
+      ></ServicesList>
     </div>
   );
 };

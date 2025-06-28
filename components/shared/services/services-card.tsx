@@ -53,19 +53,19 @@ const ServiceCard = ({ service, index, isAdmin }: ServiceCardProps) => {
           </p>
           <div className="flex overflow-hidden text-xs justify-end">
             {/* Senior column */}
-            <div className="pr-2 text-center">
+            {/* <div className="pr-2 text-center">
               <div className="mb-1 font-semibold">Senior:</div>
               <p className="font-medium">{service.senior_price} UAH</p>
-            </div>
+            </div> */}
 
             {/* Divider */}
-            <div className="w-px bg-gray-300" />
+            {/* <div className="w-px bg-gray-300" /> */}
 
             {/* Expert column */}
-            <div className="pl-2 text-center">
+            {/* <div className="pl-2 text-center">
               <div className="mb-1 font-semibold">Expert:</div>
               <p className="font-medium">{service.price} UAH</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
