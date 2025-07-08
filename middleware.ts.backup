@@ -4,14 +4,16 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const hasCookie =
-    request.cookies.has("authjs.session-token") ||
-    request.cookies.has("__Secure-authjs.session-token");
+  // Простая проверка cookie для аутентификации
+  const hasCookie = request.cookies.has("authjs.session-token") || 
+                   request.cookies.has("__Secure-authjs.session-token");
 
+  // Защита админ панели
   if (pathname.startsWith("/admin-crew") && !hasCookie) {
     return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
+  // Редирект если уже авторизован
   if (pathname === "/sign-in" && hasCookie) {
     return NextResponse.redirect(new URL("/admin-crew", request.url));
   }
