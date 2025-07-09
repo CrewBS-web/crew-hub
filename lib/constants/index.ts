@@ -1,6 +1,8 @@
-export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Crew";
+export const APP_NAME =
+  process.env.NEXT_PUBLIC_APP_NAME || "CREW — барбершопи Ужгорода, де є стиль";
 export const APP_DESCRIPTION =
-  process.env.NEXT_PUBLIC_APP_DESCRIPTION || "crew barbershop Uzhorod";
+  process.env.NEXT_PUBLIC_APP_DESCRIPTION ||
+  "CREW — мережа чоловічих барбершопів. Стиль, сервіс і атмосфера. 4 локації в Ужгороді: заходь на свою.";
 export const SERVER_URL =
   process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000";
 export const LATEST_PRODUCTS_LIMIT =
