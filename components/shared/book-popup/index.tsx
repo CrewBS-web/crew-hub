@@ -34,7 +34,7 @@ const BookPopUp = async () => {
         </DialogHeader>
 
         {/* Scrollable Content */}
-        <div className="overflow-y-auto py-4 flex flex-col gap-3 flex-1">
+        <div className="overflow-y-auto py-4 flex-1 grid grid-cols-2 gap-1.5">
           {locations.map((l, index) => (
             <Location
               key={index}
@@ -42,6 +42,7 @@ const BookPopUp = async () => {
               mapLink={l.mapLink}
               address={l.address}
               reservationUrl={l.reservationUrl}
+              compact={true}
             />
           ))}
         </div>
