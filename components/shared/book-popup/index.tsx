@@ -43,6 +43,7 @@ const BookPopUp = async () => {
               address={l.address}
               reservationUrl={l.reservationUrl}
               compact={true}
+              noHoverAction={true}
             />
           ))}
         </div>

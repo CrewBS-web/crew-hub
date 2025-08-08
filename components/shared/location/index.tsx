@@ -9,6 +9,7 @@ interface LocationProps {
   mapLink: string;
   reservationUrl: string;
   compact?: boolean;
+  noHoverAction?: boolean;
 }
 
 const Location = ({
@@ -17,6 +18,7 @@ const Location = ({
   mapLink,
   reservationUrl,
   compact = false,
+  noHoverAction = false,
   className
 }: LocationProps & { className?: string }) => {
   if (!compact) {
@@ -27,7 +29,7 @@ const Location = ({
           className={clsx(
             "relative w-full p-6 shadow-md transition-all duration-300 ease-in-out",
             "border-2 border-black dark:border-white",
-            "hover:border-2 hover:scale-105",
+            !noHoverAction && "hover:border-2 hover:scale-105",
             "rounded-sm"
           )}
         >
@@ -54,7 +56,7 @@ const Location = ({
       className={clsx(
         "relative flex flex-col justify-between w-full h-full p-4 sm:p-6 shadow-md transition-all duration-300 ease-in-out",
         "border-2 border-black dark:border-white",
-        "hover:border-2 hover:scale-105",
+        !noHoverAction && "hover:border-2 hover:scale-105",
         "rounded-sm",
         className
       )}

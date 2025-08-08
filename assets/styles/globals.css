@@ -14,6 +14,15 @@
           -ms-overflow-style: none;  /* IE and Edge */
           scrollbar-width: none;  /* Firefox */
     }
+    /* Halo fade animation used for the floating booking FAB */
+    @keyframes halo-fade {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .animate-halo-fade {
+      animation: halo-fade 1.8s ease-in-out infinite;
+    }
   }
 
 @theme {

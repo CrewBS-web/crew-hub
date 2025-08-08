@@ -10,7 +10,7 @@ import {
 import { usePathname } from "next/navigation";
 
 const NavBar = () => {
-  const pathname = usePathname();
+  const pathname: string = usePathname() as string;
   return (
     <NavigationMenu>
       <NavigationMenuList>
