@@ -25,6 +25,8 @@ model Staff {
   description_short String
   description       String
   images            String
+  slug              String?
+  reserve_link      String?
 }
 
 model Locations {

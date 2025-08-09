@@ -32,7 +32,9 @@ export default function AdminStaffView({ staff }: AdminServicesProps) {
     description_short: "",
     isSenior: false,
     isArtDirector: false,
-    images: ""
+    images: "",
+    slug: "",
+    reserve_link: ""
   };
 
   const handleDelete = (id: string) => {

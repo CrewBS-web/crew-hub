@@ -65,6 +65,34 @@ const StaffEditDialog = ({
             </div>
 
             <div>
+              <Label htmlFor="slug" className="mb-2">
+                slug
+              </Label>
+              <Input
+                id="slug"
+                value={editStaff.slug || ""}
+                onChange={(e) =>
+                  setEditStaff({ ...editStaff, slug: e.target.value })
+                }
+                placeholder="unique-slug"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="reserve_link" className="mb-2">
+                Посилання для запису
+              </Label>
+              <Input
+                id="reserve_link"
+                value={editStaff.reserve_link || ""}
+                onChange={(e) =>
+                  setEditStaff({ ...editStaff, reserve_link: e.target.value })
+                }
+                placeholder="https://..."
+              />
+            </div>
+
+            <div>
               <Label htmlFor="description_short" className="mb-2">
                 Короткий опис
               </Label>

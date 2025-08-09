@@ -53,7 +53,12 @@ export const insertStaffSchema = z.object({
     .min(3, "Description must be at least 3 characters"),
   isSenior: z.boolean(),
   isArtDirector: z.boolean(),
-  images: z.string().min(6, "Password must be at least 6 symbols")
+  images: z.string().min(6, "Password must be at least 6 symbols"),
+  slug: z.string().min(3, "Slag must be at least 3 characters").nullable(),
+  reserve_link: z
+    .string()
+    .min(3, "Name must be at least 3 characters")
+    .nullable()
 });
 
 // Schema for inserting Location
