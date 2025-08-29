@@ -19,8 +19,9 @@ const Location = ({
   reservationUrl,
   compact = false,
   noHoverAction = false,
-  className
-}: LocationProps & { className?: string }) => {
+  className,
+  style
+}: LocationProps & { className?: string; style?: React.CSSProperties }) => {
   if (!compact) {
     // old layout
     return (
@@ -30,8 +31,10 @@ const Location = ({
             "relative w-full p-6 shadow-md transition-all duration-300 ease-in-out",
             "border-2 border-black dark:border-white",
             !noHoverAction && "hover:border-2 hover:scale-105",
-            "rounded-sm"
+            "rounded-sm",
+            className
           )}
+          style={style}
         >
           <div className="flex flex-col justify-between gap-1">
             <h3 className="text-s md:text-xl font-semibold mb-2">{name}</h3>
@@ -54,24 +57,25 @@ const Location = ({
   return (
     <div
       className={clsx(
-        "relative flex flex-col justify-between w-full h-full p-4 sm:p-6 shadow-md transition-all duration-300 ease-in-out",
+        "relative flex flex-col justify-between w-full p-3 sm:p-4 box-border overflow-hidden shadow-md transition-all duration-300 ease-in-out",
         "border-2 border-black dark:border-white",
-        !noHoverAction && "hover:border-2 hover:scale-105",
+        !noHoverAction && "hover:border-2",
         "rounded-sm",
         className
       )}
+      style={style}
     >
-      <div>
-        <h3 className="text-sm md:text-base font-semibold mb-2 leading-tight">
+      <div className="flex-1 min-h-0">
+        <h3 className="text-sm md:text-base font-semibold mb-1.5 leading-tight line-clamp-2">
           {name}
         </h3>
         <Link href={mapLink} target="_blank">
-          <span className="text-[10px] sm:text-xs md:text-sm text-gray-400 whitespace-normal flex items-center gap-1">
+          <span className="text-[10px] sm:text-xs md:text-sm text-gray-400 whitespace-normal flex items-center gap-1 line-clamp-1">
             <MapPin /> {address}
           </span>
         </Link>
       </div>
-      <div className="mt-4 md:mt-2">
+      <div className="mt-2 md:mt-2 shrink-0">
         <Button asChild variant="default" className="w-full md:w-auto">
           <Link href={reservationUrl}>Обрати</Link>
         </Button>

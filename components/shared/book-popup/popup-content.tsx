@@ -22,7 +22,7 @@ const BookPopupContent = async () => {
         </DialogDescription>
       </DialogHeader>
 
-      <div className="overflow-y-auto py-4 flex-1 grid grid-cols-2 gap-1.5">
+      <div className="overflow-y-auto py-4 flex-1 grid grid-cols-2 gap-1.5 items-start">
         {locations.map((l, index) => (
           <Location
             key={index}
@@ -32,6 +32,8 @@ const BookPopupContent = async () => {
             reservationUrl={l.reservationUrl}
             compact
             noHoverAction
+            className="place-self-start overflow-hidden"
+            style={{ maxHeight: 172 }}
           />
         ))}
       </div>
