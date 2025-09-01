@@ -21,25 +21,24 @@ const BookPopupContent = async () => {
           зв’яжіться з нами телефоном чи через соцмережі.
         </DialogDescription>
       </DialogHeader>
-
-      <div className="overflow-y-auto py-4 flex-1 grid grid-cols-2 gap-1.5 items-start">
+      <div className="overflow-y-auto py-4 flex-1 grid grid-cols-2 gap-1.5 items-stretch auto-rows-[160px]">
         {locations.map((l, index) => (
-          <Location
-            key={index}
-            name={l.name}
-            mapLink={l.mapLink}
-            address={l.address}
-            reservationUrl={l.reservationUrl}
-            compact
-            noHoverAction
-            className="place-self-start overflow-hidden"
-            style={{ maxHeight: 172 }}
-          />
+          <div key={index} className="h-[160px]">
+            <Location
+              name={l.name}
+              mapLink={l.mapLink}
+              address={l.address}
+              reservationUrl={l.reservationUrl}
+              compact
+              noHoverAction
+              className="h-full overflow-hidden"
+            />
+          </div>
         ))}
       </div>
-
       <div className="flex justify-center border-t-2 pt-4 flex-col items-center gap-3">
         <CallButton />
+        <CallButton phone={"+380951505000"} label={"+380 95 150 5000"} />
         <SocialLinks />
       </div>
     </>

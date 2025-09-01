@@ -33,6 +33,7 @@ const ContactSection = () => {
             ))}
         </motion.h3>
         <CallButton />
+        <CallButton phone={"+380951505000"} label={"+380 95 150 5000"} />
         <SocialLinks />
       </motion.div>
     </div>

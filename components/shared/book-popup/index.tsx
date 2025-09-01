@@ -51,6 +51,7 @@ const BookPopUp = async () => {
         {/* Optional Fixed Footer */}
         <div className="flex justify-center border-t-2 pt-4 flex-col items-center gap-3">
           <CallButton />
+          <CallButton phone={"+380951505000"} label={"+380 95 150 5000"} />
           <SocialLinks />
         </div>
       </DialogContent>
