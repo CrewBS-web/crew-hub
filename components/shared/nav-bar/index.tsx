@@ -15,39 +15,39 @@ const NavBar = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname === "/"}>
+          <NavigationMenuLink asChild active={pathname === "/"}>
+            <Link href="/">
               <span className="font-semibold">Головна</span>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/services" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname.includes("services")}>
+          <NavigationMenuLink asChild active={pathname.includes("services")}>
+            <Link href="/services">
               <span className="font-semibold">Наші послуги</span>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/staff" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname.includes("staff")}>
+          <NavigationMenuLink asChild active={pathname.includes("staff")}>
+            <Link href="/staff">
               <span className="font-semibold">Наші майстри</span>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/academy" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname === "/academy"}>
+          <NavigationMenuLink asChild active={pathname === "/academy"}>
+            <Link href="/academy">
               <span className="font-semibold">Академія</span>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/blog" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname.includes("blog")}>
+          <NavigationMenuLink asChild active={pathname.includes("blog")}>
+            <Link href="/blog">
               <span className="font-semibold">Блог</span>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

@@ -21,32 +21,38 @@ const AdminNavBar = () => {
 
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/admin-crew/services" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname === "/admin-crew/services"}>
+          <NavigationMenuLink
+            asChild
+            active={pathname === "/admin-crew/services"}
+          >
+            <Link href="/admin-crew/services">
               <span className="font-semibold">Послуги</span>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/admin-crew/staff" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname === "/admin-crew/staff"}>
+          <NavigationMenuLink asChild active={pathname === "/admin-crew/staff"}>
+            <Link href="/admin-crew/staff">
               <span className="font-semibold">Майстри</span>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/admin-crew/blog" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname === "/admin-crew/blog"}>
+          <NavigationMenuLink asChild active={pathname === "/admin-crew/blog"}>
+            <Link href="/admin-crew/blog">
               <span className="font-semibold">Блог</span>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/admin-crew/location" legacyBehavior passHref>
-            <NavigationMenuLink active={pathname === "/admin-crew/location"}>
+          <NavigationMenuLink
+            asChild
+            active={pathname === "/admin-crew/location"}
+          >
+            <Link href="/admin-crew/location">
               <span className="font-semibold">Локації</span>
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
       <div>
