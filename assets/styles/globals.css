@@ -233,4 +233,11 @@
   }
 }
 
+/* Hide the built-in Alteg widget button (we use custom triggers). */
+.yButton,
+.yButton-altegio,
+[class*="yButton"] {
+  display: none !important;
+}
+
 

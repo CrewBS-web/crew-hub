@@ -1,12 +1,12 @@
-import { getLocations } from "@/lib/actions/location.actions";
+// import { getLocations } from "@/lib/actions/location.actions";
 
 import InfoSection from "@/components/shared/info-section";
-import Location from "@/components/shared/location";
+// import Location from "@/components/shared/location";
 import Logo from "@/components/shared/logo";
 import ContactSection from "@/components/shared/contact-section";
 
 const Homepage = async () => {
-  const locations = await getLocations();
+  // const locations = await getLocations();
   return (
     <div className="flex flex-col gap-12">
       <div className="relative overflow-hidden rounded-lg min-h-96">
@@ -35,7 +35,7 @@ const Homepage = async () => {
       </div>
       <ContactSection />
       <InfoSection />
-      <div className="pt-8 border-t-1 border-grey">
+      {/* <div className="pt-8 border-t-1 border-grey">
         <h2 className="text-xl font-bold">Де нас знайти:</h2>
         <div className="py-4 grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-3">
           {locations.map((l, index) => (
@@ -48,7 +48,7 @@ const Homepage = async () => {
             />
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

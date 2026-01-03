@@ -2,7 +2,7 @@ import Header from "@/components/shared/header";
 import Footer from "@/components/shared/footer";
 import NavBar from "@/components/shared/nav-bar";
 import FabBook from "@/components/shared/book-popup/fab-book";
-import BookPopupContent from "@/components/shared/book-popup/popup-content";
+import Script from "next/script";
 
 export default function RootLayout({
   children
@@ -15,9 +15,15 @@ export default function RootLayout({
       <NavBar />
       <main className="flex-1 wrapper flex-grow">{children}</main>
       <Footer />
-      <FabBook>
-        <BookPopupContent />
-      </FabBook>
+      <Script id="alteg-widget-options" strategy="beforeInteractive">
+        {`window.yWidgetSettings = window.yWidgetSettings || {}; window.yWidgetSettings.buttonAutoShow = false; window.widgetOptions = window.widgetOptions || {}; window.widgetOptions.buttonAutoShow = false;`}
+      </Script>
+      <Script
+        src="https://w816066.alteg.io/widgetJS"
+        strategy="afterInteractive"
+        charSet="UTF-8"
+      />
+      <FabBook />
     </div>
   );
 }
