@@ -12,6 +12,7 @@ interface StaffCardProps {
   images: string;
   isSenior: boolean;
   isArtDirector: boolean;
+  isBarber: boolean;
   description: string;
 }
 
@@ -21,11 +22,13 @@ const StaffCard = ({
   description_short,
   images,
   isSenior,
-  isArtDirector
+  isArtDirector,
+  isBarber
 }: StaffCardProps) => {
   let roleLabel = "Експерт";
   if (isArtDirector) roleLabel = "Арт директор";
   else if (isSenior) roleLabel = "Старший експерт";
+  else if (isBarber) roleLabel = "Барбер";
 
   return (
     <motion.div

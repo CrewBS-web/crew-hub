@@ -32,6 +32,7 @@ export default function AdminStaffView({ staff }: AdminServicesProps) {
     description_short: "",
     isSenior: false,
     isArtDirector: false,
+    isBarber: false,
     images: "",
     slug: "",
     reserve_link: ""

@@ -17,6 +17,7 @@ const StaffPage = async ({ params }: StaffPageProps) => {
   let roleLabel = "Експерт";
   if (staff.isArtDirector) roleLabel = "Арт директор";
   else if (staff.isSenior) roleLabel = "Старший експерт";
+  else if (staff.isBarber) roleLabel = "Барбер";
 
   return (
     <div>

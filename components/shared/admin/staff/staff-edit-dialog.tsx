@@ -125,7 +125,7 @@ const StaffEditDialog = ({
                 placeholder="Опис майстра"
               />
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-4 items-center flex-wrap">
               <div className="flex justify-start gap-2">
                 <Label htmlFor="isArtDirector">Арт директор</Label>
                 <Checkbox
@@ -141,7 +141,7 @@ const StaffEditDialog = ({
               </div>
               {!editStaff.isArtDirector && (
                 <div className="flex justify-start gap-2">
-                  <Label htmlFor="isSenior">Кваліфікація старший експерт</Label>
+                  <Label htmlFor="isSenior">Старший експерт</Label>
                   <Checkbox
                     id="isSenior"
                     checked={editStaff.isSenior}
@@ -149,6 +149,21 @@ const StaffEditDialog = ({
                       setEditStaff({
                         ...editStaff,
                         isSenior: Boolean(checked)
+                      })
+                    }
+                  />
+                </div>
+              )}
+              {!editStaff.isArtDirector && !editStaff.isSenior && (
+                <div className="flex justify-start gap-2">
+                  <Label htmlFor="isBarber">Барбер</Label>
+                  <Checkbox
+                    id="isBarber"
+                    checked={editStaff.isBarber}
+                    onCheckedChange={(checked) =>
+                      setEditStaff({
+                        ...editStaff,
+                        isBarber: Boolean(checked)
                       })
                     }
                   />
