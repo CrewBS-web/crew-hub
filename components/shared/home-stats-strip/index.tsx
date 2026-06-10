@@ -1,13 +1,42 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useInView, useMotionValue, animate } from "framer-motion";
 
 const stats = [
-  { num: "5+", label: "Років досвіду" },
-  { num: "20+", label: "Майстрів" },
-  { num: "4", label: "Локації" },
-  { num: "1000+", label: "Клієнтів" }
+  { num: 5, suffix: "+", label: "Років досвіду" },
+  { num: 20, suffix: "+", label: "Майстрів" },
+  { num: 4, suffix: "", label: "Локації" },
+  { num: 1000, suffix: "+", label: "Клієнтів" },
 ];
+
+function CountUp({ target, suffix, delay }: { target: number; suffix: string; delay: number }) {
+  const spanRef = useRef<HTMLSpanElement>(null);
+  const inView = useInView(spanRef, { once: true });
+  const count = useMotionValue(0);
+
+  useEffect(() => {
+    return count.on("change", (v) => {
+      if (spanRef.current) spanRef.current.textContent = Math.round(v) + suffix;
+    });
+  }, [count, suffix]);
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(count, target, {
+      duration: 1.8,
+      delay,
+      ease: "easeOut",
+    });
+    return controls.stop;
+  }, [inView, count, target, delay]);
+
+  return (
+    <span ref={spanRef} className="text-4xl md:text-5xl font-bold tracking-tight">
+      0{suffix}
+    </span>
+  );
+}
 
 const HomeStatsStrip = () => {
   return (
@@ -22,9 +51,7 @@ const HomeStatsStrip = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
           >
-            <span className="text-4xl md:text-5xl font-bold tracking-tight">
-              {s.num}
-            </span>
+            <CountUp target={s.num} suffix={s.suffix} delay={i * 0.15} />
             <span className="text-xs text-muted-foreground tracking-[0.15em] uppercase">
               {s.label}
             </span>

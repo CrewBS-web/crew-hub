@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface StaffCardProps {
   id: string;
@@ -30,6 +31,8 @@ const StaffCard = ({
   noEntryAnimation = false,
   firstNameOnly = false
 }: StaffCardProps) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   let roleLabel = "Експерт";
   if (isArtDirector) roleLabel = "Арт директор";
   else if (isSenior) roleLabel = "Старший експерт";
@@ -55,7 +58,17 @@ const StaffCard = ({
       <Link href={`/staff/${id}`} className="block p-4 h-full">
         <div className="flex flex-col items-center justify-center gap-2">
           <div className="relative rounded-full border-2 border-white/40 h-30 w-30 overflow-hidden">
-            <Image src={images} alt={name} fill className="object-cover" />
+            {!imgLoaded && (
+              <div className="absolute inset-0 bg-white/10 animate-pulse" />
+            )}
+            <Image
+              src={images}
+              alt={name}
+              fill
+              className="object-cover transition-opacity duration-300"
+              style={{ opacity: imgLoaded ? 1 : 0 }}
+              onLoad={() => setImgLoaded(true)}
+            />
           </div>
           <h4 className="font-bold text-l text-center leading-tight min-h-[2.6rem] flex items-center justify-center">
             {firstNameOnly ? name.split(" ")[0] : name}
