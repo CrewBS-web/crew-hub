@@ -7,9 +7,11 @@ import { revalidatePath } from "next/cache";
 
 export async function getStaff() {
   const data = await prisma.staff.findMany({
-    orderBy: {
-      name: "asc"
-    }
+    orderBy: [
+      { priority: "desc" },
+      { isArtDirector: "desc" },
+      { name: "asc" },
+    ],
   });
 
   return convertToPlainObject(data);

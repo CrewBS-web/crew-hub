@@ -35,7 +35,8 @@ export default function AdminStaffView({ staff }: AdminServicesProps) {
     isBarber: false,
     images: "",
     slug: "",
-    reserve_link: ""
+    reserve_link: "",
+    priority: 0
   };
 
   const handleDelete = (id: string) => {

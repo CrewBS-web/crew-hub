@@ -18,9 +18,7 @@ const StaffList = ({ data, isAdmin, onDelete, onEdit }: StaffListProps) => {
       <h2 className="h3-bold mb-4 font-semibold">Майстри:</h2>
       {data.length > 0 ? (
         <div className="grid grid-cols-1 s:grid-cols-2 md:grid-cols-3 lg:grid-col-4 gap-3 sm:gap-3 md:gap-6 items-stretch">
-          {[...data]
-            .sort((a, b) => +b.isArtDirector - +a.isArtDirector)
-            .map((staff: Staff) => (
+          {data.map((staff: Staff) => (
               <div
                 key={staff.id}
                 className={clsx(

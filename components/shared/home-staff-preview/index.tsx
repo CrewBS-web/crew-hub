@@ -13,9 +13,7 @@ function pickRandom(arr: Staff[], count: number, exclude: Staff[] = []): Staff[]
 }
 
 const HomeStaffPreview = ({ staff }: { staff: Staff[] }) => {
-  const initial = [...staff]
-    .sort((a, b) => +b.isArtDirector - +a.isArtDirector)
-    .slice(0, 6);
+  const initial = staff.slice(0, 6);
 
   const [current, setCurrent] = useState<Staff[]>(initial);
   const [opacity, setOpacity] = useState(1);

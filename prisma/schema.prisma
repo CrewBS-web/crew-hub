@@ -28,6 +28,7 @@ model Staff {
   images            String
   slug              String?
   reserve_link      String?
+  priority          Int     @default(0)
 }
 
 model Locations {

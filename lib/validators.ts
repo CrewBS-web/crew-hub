@@ -59,7 +59,8 @@ export const insertStaffSchema = z.object({
   reserve_link: z
     .string()
     .min(3, "Name must be at least 3 characters")
-    .nullable()
+    .nullable(),
+  priority: z.number().int().default(0)
 });
 
 // Schema for inserting Location
