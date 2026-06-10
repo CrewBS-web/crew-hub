@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import clsx from "clsx";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -14,6 +13,9 @@ interface StaffCardProps {
   isArtDirector: boolean;
   isBarber: boolean;
   description: string;
+  hideDescription?: boolean;
+  noEntryAnimation?: boolean;
+  firstNameOnly?: boolean;
 }
 
 const StaffCard = ({
@@ -23,7 +25,10 @@ const StaffCard = ({
   images,
   isSenior,
   isArtDirector,
-  isBarber
+  isBarber,
+  hideDescription = false,
+  noEntryAnimation = false,
+  firstNameOnly = false
 }: StaffCardProps) => {
   let roleLabel = "Експерт";
   if (isArtDirector) roleLabel = "Арт директор";
@@ -33,33 +38,34 @@ const StaffCard = ({
   return (
     <motion.div
       className="h-full w-full"
-      initial={{ opacity: 0, y: 20 }}
+      initial={noEntryAnimation ? false : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      whileHover={{ scale: 1.03 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      style={{
+        background: "rgba(255,255,255,0.06)",
+        backdropFilter: "blur(28px) saturate(180%)",
+        WebkitBackdropFilter: "blur(28px) saturate(180%)",
+        border: "1px solid rgba(255,255,255,0.35)",
+        borderRadius: "20px",
+        boxShadow:
+          "0 2px 16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5)",
+      }}
     >
-      <div className="h-full w-full">
-        <div
-          className={clsx(
-            "relative w-full h-full flex flex-col p-4 shadow-md transition-all duration-300 ease-in-out overflow-hidden",
-            "border-2 border-black dark:border-white",
-            "hover:border-2 hover:scale-105",
-            "rounded-sm"
+      <Link href={`/staff/${id}`} className="block p-4 h-full">
+        <div className="flex flex-col items-center justify-center gap-2">
+          <div className="relative rounded-full border-2 border-white/40 h-30 w-30 overflow-hidden">
+            <Image src={images} alt={name} fill className="object-cover" />
+          </div>
+          <h4 className="font-bold text-l text-center leading-tight min-h-[2.6rem] flex items-center justify-center">
+            {firstNameOnly ? name.split(" ")[0] : name}
+          </h4>
+          <p className="text-gray-400 text-xs">{roleLabel}</p>
+          {!hideDescription && (
+            <p className="text-center font-medium text-sm">{description_short}</p>
           )}
-        >
-          <Link href={`/staff/${id}`}>
-            <div className="flex flex-col items-center justify-center gap-2">
-              <div className="relative rounded-full border-2 border-white h-30 w-30 overflow-hidden">
-                <Image src={images} alt={name} fill className="object-cover" />
-              </div>
-              <h4 className="font-bold text-l text-center">{name}</h4>
-              <p className="text-gray-400 text-xs">{roleLabel}</p>
-              <p className="text-center font-medium text-sm">
-                {description_short}
-              </p>
-            </div>
-          </Link>
         </div>
-      </div>
+      </Link>
     </motion.div>
   );
 };

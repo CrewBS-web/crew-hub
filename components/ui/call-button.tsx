@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "./button";
 
 type CallButtonProps = {
   phone?: string;
@@ -17,13 +16,20 @@ const CallButton = ({ phone = "+380967201181", label }: CallButtonProps) => {
   const text = label ?? formatUaPhone(phone);
 
   return (
-    <Button
-      asChild
-      variant="outline"
-      className="min-w-[200px] justify-center tabular-nums"
+    <Link
+      href={`tel:${phone}`}
+      className="min-w-[200px] text-center tabular-nums px-6 py-2.5 rounded-2xl text-sm font-medium transition-transform duration-200 hover:scale-[1.03]"
+      style={{
+        background: "rgba(255,255,255,0.1)",
+        backdropFilter: "blur(24px) saturate(180%)",
+        WebkitBackdropFilter: "blur(24px) saturate(180%)",
+        border: "1px solid rgba(255,255,255,0.3)",
+        boxShadow:
+          "0 2px 16px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.45)",
+      }}
     >
-      <Link href={`tel:${phone}`}>{text}</Link>
-    </Button>
+      {text}
+    </Link>
   );
 };
 

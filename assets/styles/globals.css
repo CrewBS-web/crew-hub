@@ -229,7 +229,14 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: linear-gradient(145deg, #f8f6f2 0%, #f0f4fb 45%, #f6f2ee 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  .dark body {
+    background: linear-gradient(145deg, #06060d 0%, #090d1c 50%, #06060d 100%);
+    background-attachment: fixed;
   }
 }
 
