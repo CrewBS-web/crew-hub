@@ -8,6 +8,7 @@ declare global {
       href?: string;
       show?: (url?: string) => void;
     };
+    fbq?: (...args: unknown[]) => void;
   }
 }
 
@@ -45,6 +46,8 @@ export const useAltegBooking = (options?: UseAltegBookingOptions) => {
   const openBooking = useCallback(
     (url?: string) => {
       if (typeof window === "undefined") return;
+
+      window.fbq?.("track", "Schedule");
 
       const widget = window.yWidget;
       const targetUrl = url ?? widget?.href ?? fallbackUrl;
