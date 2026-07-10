@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
+import ScrollToTop from "@/components/shared/scroll-to-top";
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
 
 import "@/assets/styles/globals.css";
@@ -79,6 +80,7 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
+          <ScrollToTop />
           {children}
         </ThemeProvider>
       </body>
