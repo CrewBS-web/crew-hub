@@ -45,7 +45,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* Meta Pixel */}
+        {/* Meta Pixel — temporarily disabled, uncomment to re-enable
         <Script
           id="meta-pixel"
           strategy="afterInteractive"
@@ -62,9 +62,10 @@ export default function RootLayout({
                 fbq('track', 'PageView');`
           }}
         />
+        */}
       </head>
       <body className={`${inter.className} antialiased min-h-screen`}>
-        {/* Meta Pixel (noscript) */}
+        {/* Meta Pixel (noscript) — temporarily disabled, uncomment to re-enable
         <noscript>
           <img
             height="1"
@@ -74,6 +75,7 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+        */}
         <ThemeProvider
           attribute={"class"}
           defaultTheme="dark"
