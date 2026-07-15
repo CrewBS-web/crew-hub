@@ -1,6 +1,6 @@
 ---
 name: code-reviewer
-description: Reviews code changes (a diff, a branch vs main, or a specific PR) for correctness bugs, security issues, and simplification opportunities. Use proactively after implementing a feature or fixing a bug, and before opening a pull request. Read-only — does not modify files.
+description: Reviews code changes (a diff, a branch vs main, or a specific PR) for correctness bugs, security issues, and simplification opportunities. Use proactively after implementing a feature or fixing a bug, and before opening a pull request. Read-only — does not modify files. You must tell the agent which files you want it to review. Return sources that can be cited.
 tools: Read, Grep, Glob, Bash
 model: sonnet
 color: green
