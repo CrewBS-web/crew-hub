@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 
-import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
+import {
+  APP_DESCRIPTION,
+  APP_NAME,
+  META_PIXEL_ID,
+  SERVER_URL
+} from "@/lib/constants";
 
 import "@/assets/styles/globals.css";
 
@@ -58,7 +63,7 @@ export default function RootLayout({
                 t.src=v;s=b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t,s)}(window, document,'script',
                 'https://connect.facebook.net/en_US/fbevents.js');
-                fbq('init', '1586412449667622');
+                fbq('init', '${META_PIXEL_ID}');
                 fbq('track', 'PageView');`
           }}
         />
@@ -70,7 +75,7 @@ export default function RootLayout({
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1586412449667622&ev=PageView&noscript=1"
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
             alt=""
           />
         </noscript>
