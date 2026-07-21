@@ -31,6 +31,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
+  // TEMP DEBUG — remove once Meta CAPI event confirmed firing from real Altegio payloads.
+  console.log("[altegio-webhook] payload", JSON.stringify(payload));
+
   if (
     payload.resource === "record" &&
     payload.status === "create" &&
@@ -50,6 +53,13 @@ export async function POST(request: NextRequest) {
         firstName: payload.data.client.name,
         lastName: payload.data.client.surname
       }
+    });
+  } else {
+    // TEMP DEBUG — remove alongside the payload log above.
+    console.log("[altegio-webhook] skipped, condition not met", {
+      resource: payload.resource,
+      status: payload.status,
+      hasClient: Boolean(payload.data?.client)
     });
   }
 
