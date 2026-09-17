@@ -46,9 +46,10 @@ const StaffCard = ({
       whileHover={{ scale: 1.03 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       style={{
-        background: "rgba(255,255,255,0.06)",
-        backdropFilter: "blur(28px) saturate(180%)",
-        WebkitBackdropFilter: "blur(28px) saturate(180%)",
+        // Solid tinted panel instead of `backdrop-filter: blur()` — the
+        // latter tanks frame rate on older iOS/WebKit, especially with
+        // several cards on screen at once and a hover-scale animation.
+        background: "rgba(255,255,255,0.14)",
         border: "1px solid rgba(255,255,255,0.35)",
         borderRadius: "20px",
         boxShadow:

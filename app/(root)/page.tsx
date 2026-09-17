@@ -56,7 +56,7 @@ const Homepage = async () => {
       {staff.length > 0 && (
         <section className="py-12 px-6 md:px-10 mt-8 border-t border-white/10 relative rounded-2xl overflow-hidden">
           <div className="absolute inset-0 -z-10">
-            <Image src="/images/info-section/info-section-bg-2.jpg" alt="" fill className="object-cover scale-110" style={{ filter: "blur(14px)" }} />
+            <Image src="/images/info-section/info-section-bg-2.jpg" alt="" fill className="object-cover" />
             <div className="absolute inset-0 bg-white/65 dark:bg-black/45" />
           </div>
           <div className="flex items-end justify-between mb-10">
