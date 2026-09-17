@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { appendUtmParams, captureUtmParams } from "@/lib/utm-params";
+
 declare global {
   interface Window {
     yWidget?: {
@@ -21,6 +23,10 @@ export const useAltegBooking = (options?: UseAltegBookingOptions) => {
   const pollMs = options?.pollMs ?? 200;
 
   const [isWidgetReady, setIsWidgetReady] = useState(false);
+
+  useEffect(() => {
+    captureUtmParams();
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -47,7 +53,7 @@ export const useAltegBooking = (options?: UseAltegBookingOptions) => {
       if (typeof window === "undefined") return;
 
       const widget = window.yWidget;
-      const targetUrl = url ?? widget?.href ?? fallbackUrl;
+      const targetUrl = appendUtmParams(url ?? widget?.href ?? fallbackUrl);
 
       if (typeof widget?.show === "function") {
         // This matches the widget behavior: overlay on desktop, redirect on mobile.
