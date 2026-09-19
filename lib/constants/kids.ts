@@ -19,3 +19,13 @@ export const KIDS_SERVICES = [
   { name: "Дитяча стрижка без мультфільму", price: 600 },
   { name: "Дитяча стрижка від 10 до 14 років", price: 650 }
 ];
+
+export const KIDS_GALLERY = [
+  { src: "/images/kids/gallery-1.jpg", alt: "Малюк грається з іграшками в CREW kids" },
+  { src: "/images/kids/gallery-2.jpg", alt: "Двоє малюків біля дверей CREW kids" },
+  { src: "/images/kids/gallery-3.jpg", alt: "Малюк у перукарському кріслі з печивом" },
+  { src: "/images/kids/gallery-4.jpg", alt: "Хлопчик у кріслі з жовтою каченятою" },
+  { src: "/images/kids/gallery-5.jpg", alt: "Кучерявий малюк ловить мильні бульбашки" },
+  { src: "/images/kids/gallery-6.jpg", alt: "Малюк на стрижці, мама і майстер поруч, іграшкові машинки" },
+  { src: "/images/kids/gallery-7.jpg", alt: "Хлопчик з піною для гоління на стрижці" }
+];
