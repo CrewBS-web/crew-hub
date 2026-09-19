@@ -36,6 +36,13 @@ const NavBar = () => {
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
+          <NavigationMenuLink asChild active={pathname.includes("kids")}>
+            <Link href="/kids">
+              <span className="font-semibold">CREW kids</span>
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <NavigationMenuLink asChild active={pathname === "/academy"}>
             <Link href="/academy">
               <span className="font-semibold">Академія</span>
