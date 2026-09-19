@@ -11,6 +11,7 @@ import {
   KidsDoodleRow
 } from "@/components/shared/kids/kids-doodles";
 import KidsBookButton from "@/components/shared/kids/kids-book-button";
+import KidsGallery from "@/components/shared/kids/kids-gallery";
 import {
   KIDS_FEATURES,
   KIDS_LOCATION,
@@ -181,6 +182,13 @@ const KidsPage = () => {
         </KidsFadeUp>
       </section>
       <KidsDoodleRow icons={["fish", "star", "rabbit"]} />
+
+      {/* ─── GALLERY ─── */}
+      <KidsFadeUp className="flex flex-col gap-6">
+        <h2 className="text-3xl font-bold md:text-4xl">Наші маленькі гості</h2>
+        <KidsGallery />
+      </KidsFadeUp>
+      <KidsDoodleRow icons={["cat", "heart", "bear"]} />
 
       {/* ─── LOCATION ─── */}
       <KidsFadeUp className="relative flex flex-col gap-4">
