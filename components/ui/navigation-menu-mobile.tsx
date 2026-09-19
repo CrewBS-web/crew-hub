@@ -19,6 +19,9 @@ const NavigationMenuMobile = ({ onLinkClick }: NavigationMenuMobileProps) => {
         <Link onClick={onLinkClick} href="/staff">
           Наші майстри
         </Link>
+        <Link onClick={onLinkClick} href="/kids">
+          CREW kids
+        </Link>
         <Link onClick={onLinkClick} href="/academy">
           Академія
         </Link>
