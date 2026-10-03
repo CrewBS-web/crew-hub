@@ -1,24 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import {
+  type AltegioRecordPayload,
+  isOnlineRecord,
+  redactPayload
+} from "@/lib/altegio-webhook";
 import { sendScheduleEvent } from "@/lib/meta-conversions-api";
-
-type AltegioWebhookStatus = "create" | "update" | "delete";
-
-type AltegioRecordPayload = {
-  resource: string;
-  status: AltegioWebhookStatus;
-  data: {
-    id: number;
-    datetime: string;
-    create_date: string;
-    client?: {
-      id: number;
-      name?: string;
-      surname?: string;
-      phone?: string;
-    };
-  };
-};
 
 // Altegio does not sign these requests — the endpoint is unauthenticated by
 // product decision (revisit if fake "create" events become a problem).
@@ -27,39 +14,52 @@ export async function POST(request: NextRequest) {
 
   try {
     payload = await request.json();
+    if (!payload || typeof payload !== "object") throw new Error("not an object");
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  // TEMP DEBUG — remove once Meta CAPI event confirmed firing from real Altegio payloads.
-  console.log("[altegio-webhook] payload", JSON.stringify(payload));
+  // Personal data is masked; these logs double as sample payloads for the
+  // ad team (online booking vs. admin booking vs. cancellation).
+  console.log("[altegio-webhook] payload", JSON.stringify(redactPayload(payload)));
 
+  const { resource, status, data } = payload;
+
+  // Only newly created online bookings count as a "Schedule" conversion.
+  // Updates and deletes (cancellations) and admin-created records are skipped.
   if (
-    payload.resource === "record" &&
-    payload.status === "create" &&
-    payload.data?.client
+    resource === "record" &&
+    status === "create" &&
+    typeof data?.id === "number" &&
+    data.client &&
+    isOnlineRecord(data)
   ) {
+    const createdAt = new Date(data.create_date || data.datetime).getTime();
+    // Meta rejects an invalid timestamp; fall back to "now" (webhook fires on
+    // creation, so it is a close approximation).
     const eventTime = Math.floor(
-      new Date(payload.data.create_date || payload.data.datetime).getTime() /
-        1000
+      (Number.isNaN(createdAt) ? Date.now() : createdAt) / 1000
     );
 
     await sendScheduleEvent({
-      eventId: `altegio-record-${payload.data.id}-create`,
+      // One record = one event. Must match the event_id sent from GTM so Meta
+      // can deduplicate.
+      eventId: `rec_${data.id}`,
       eventTime,
       client: {
-        id: payload.data.client.id,
-        phone: payload.data.client.phone,
-        firstName: payload.data.client.name,
-        lastName: payload.data.client.surname
+        id: data.client.id,
+        phone: data.client.phone,
+        firstName: data.client.name,
+        lastName: data.client.surname
       }
     });
   } else {
-    // TEMP DEBUG — remove alongside the payload log above.
-    console.log("[altegio-webhook] skipped, condition not met", {
-      resource: payload.resource,
-      status: payload.status,
-      hasClient: Boolean(payload.data?.client)
+    console.log("[altegio-webhook] skipped", {
+      resource,
+      status,
+      recordId: data?.id,
+      online: data?.online,
+      hasClient: Boolean(data?.client)
     });
   }
 

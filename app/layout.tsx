@@ -1,3 +1,4 @@
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
@@ -5,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import {
   APP_DESCRIPTION,
   APP_NAME,
+  GTM_ID,
   META_PIXEL_ID,
   SERVER_URL
 } from "@/lib/constants";
@@ -33,6 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <GoogleTagManager gtmId={GTM_ID} />
       <head>
         {/* Google tag (gtag.js) */}
         <Script
