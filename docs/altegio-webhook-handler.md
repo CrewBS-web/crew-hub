@@ -45,9 +45,44 @@ JSON от Altegio вида `{ resource, status, data }`. Принимаются 
 Поля `name/surname/phone/email/comment` уже маскируются автоматически.
 
 ### Онлайн-запись
+Реальный payload, персональные данные заменены на `***`, лишние поля сокращены.
 ```json
-TODO
+{
+  "company_id": 766546,
+  "resource": "record",
+  "resource_id": 675318050,
+  "status": "create",
+  "data": {
+    "id": 675318050,
+    "company_id": 766546,
+    "staff_id": 2821392,
+    "date": "2026-10-04 12:00:00",
+    "comment": "***",
+    "online": true,
+    "attendance": 0,
+    "confirmed": 1,
+    "created_user_id": 0,
+    "deleted": false,
+    "api_id": "",
+    "from_url": "",
+    "bookform_id": 816066,
+    "record_from": "\"форма компанії\" Online widget",
+    "services": [{ "id": 0, "title": "Стрижка", "cost": 800, "amount": 1 }],
+    "staff": { "id": 2821392, "name": "***" },
+    "client": { "id": 0, "name": "***", "surname": "***", "phone": "***" },
+    "datetime": "2026-10-04T12:00:00+03:00",
+    "create_date": "2026-10-03T18:35:12+0300",
+    "last_change_date": "2026-10-03T18:35:12+0300"
+  }
+}
 ```
+
+Признаки онлайн-записи: `data.online === true`, `created_user_id === 0`,
+`record_from` содержит «Online widget». Для фильтра используется `online`.
+
+Важно: события `update` по онлайн-записям тоже приходят с `online: true`
+(например, при подтверждении, смене статуса). Поэтому одного `online` мало:
+Schedule отправляется только при `status === "create"`.
 
 ### Запись администратора
 ```json
