@@ -34,8 +34,11 @@ export async function POST(request: NextRequest) {
     data.client &&
     isOnlineRecord(data)
   ) {
+    const createdAt = new Date(data.create_date || data.datetime).getTime();
+    // Meta rejects an invalid timestamp; fall back to "now" (webhook fires on
+    // creation, so it is a close approximation).
     const eventTime = Math.floor(
-      new Date(data.create_date || data.datetime).getTime() / 1000
+      (Number.isNaN(createdAt) ? Date.now() : createdAt) / 1000
     );
 
     await sendScheduleEvent({
