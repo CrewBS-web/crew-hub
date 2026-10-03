@@ -85,11 +85,67 @@ JSON от Altegio вида `{ resource, status, data }`. Принимаются 
 Schedule отправляется только при `status === "create"`.
 
 ### Запись администратора
+Те же поля, отличия: `online: false`, `created_user_id` — ID сотрудника,
+`bookform_id: 0`, `record_from: ""`, заполнен `api_id`.
 ```json
-TODO
+{
+  "company_id": 766546,
+  "resource": "record",
+  "resource_id": 675318912,
+  "status": "create",
+  "data": {
+    "id": 675318912,
+    "company_id": 766546,
+    "staff_id": 2821392,
+    "date": "2026-10-04 13:00:00",
+    "comment": "***",
+    "online": false,
+    "attendance": 0,
+    "confirmed": 1,
+    "created_user_id": 10303068,
+    "deleted": false,
+    "api_id": "28f0b682-b4b1-43f7-984a-381b12852239",
+    "from_url": "",
+    "bookform_id": 0,
+    "record_from": "",
+    "client": { "id": 0, "name": "***", "surname": "***", "phone": "***" },
+    "datetime": "2026-10-04T13:00:00+03:00",
+    "create_date": "2026-10-03T18:42:18+0300",
+    "last_change_date": "2026-10-03T18:42:18+0300"
+  }
+}
 ```
 
 ### Отмена
+Приходит как `status: "delete"` с `deleted: true`. Поле `online` остаётся
+таким же, как у созданной записи (то есть `true` для онлайн-записи).
 ```json
-TODO
+{
+  "company_id": 766546,
+  "resource": "record",
+  "resource_id": 675318050,
+  "status": "delete",
+  "data": {
+    "id": 675318050,
+    "company_id": 766546,
+    "date": "2026-10-04 12:00:00",
+    "comment": "***",
+    "online": true,
+    "attendance": 0,
+    "created_user_id": 0,
+    "deleted": true,
+    "bookform_id": 816066,
+    "record_from": "\"форма компанії\" Online widget",
+    "client": { "id": 0, "name": "***", "surname": "***", "phone": "***" },
+    "datetime": "2026-10-04T12:00:00+03:00",
+    "create_date": "2026-10-03T18:35:12+0300",
+    "last_change_date": "2026-10-03T18:41:43+0300"
+  }
+}
 ```
+
+## Итоговая логика
+
+Schedule отправляется, если одновременно: `resource = "record"`,
+`status = "create"`, `data.online = true`. Всё остальное (в том числе
+`delete`, `update` и записи админа) пропускается.
