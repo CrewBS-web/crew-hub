@@ -1,11 +1,3 @@
-export const KIDS_LOCATION = {
-  name: "CREW kids",
-  address: "вулиця Василя Гаджеги, 7а, Ужгород",
-  mapLink: "https://maps.app.goo.gl/yNT5jFwMJqGPMQPb9",
-  mapEmbed:
-    "https://www.google.com/maps?q=KIDS+barbershop,+вулиця+Василя+Гаджеги,+7а,+Ужгород&output=embed"
-};
-
 export const KIDS_FEATURES = [
   "Сучасні стрижки",
   "Індивідуальний підхід",

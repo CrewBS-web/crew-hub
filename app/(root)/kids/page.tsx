@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { MapPin, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import {
   KidsFadeUp,
   KidsPhoto
@@ -14,7 +13,6 @@ import KidsBookButton from "@/components/shared/kids/kids-book-button";
 import KidsGallery from "@/components/shared/kids/kids-gallery";
 import {
   KIDS_FEATURES,
-  KIDS_LOCATION,
   KIDS_SERVICES
 } from "@/lib/constants/kids";
 
@@ -187,36 +185,6 @@ const KidsPage = () => {
       <KidsFadeUp className="flex flex-col gap-6">
         <h2 className="text-3xl font-bold md:text-4xl">Наші маленькі гості</h2>
         <KidsGallery />
-      </KidsFadeUp>
-      <KidsDoodleRow icons={["cat", "heart", "bear"]} />
-
-      {/* ─── LOCATION ─── */}
-      <KidsFadeUp className="relative flex flex-col gap-4">
-        <KidsDoodleField
-          className="right-0 top-0 hidden h-24 w-1/2 md:block"
-          items={[
-            { icon: "bear", x: "20%", y: "-10%", size: 90, rotate: 10 },
-            { icon: "heart", x: "58%", y: "30%", size: 50, rotate: -14, accent: true, delay: 0.3 },
-            { icon: "rabbit", x: "76%", y: "-20%", size: 90, rotate: -6, delay: 0.2 }
-          ]}
-        />
-        <h2 className="text-3xl font-bold md:text-4xl">Де нас знайти</h2>
-        <Link
-          href={KIDS_LOCATION.mapLink}
-          target="_blank"
-          className="flex items-center gap-2 text-lg text-muted-foreground hover:text-foreground"
-        >
-          <MapPin className="h-5 w-5" /> {KIDS_LOCATION.address}
-        </Link>
-        <div className="overflow-hidden rounded-2xl border shadow-md">
-          <iframe
-            title="CREW kids на карті"
-            src={KIDS_LOCATION.mapEmbed}
-            className="h-80 w-full md:h-[420px]"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
       </KidsFadeUp>
     </div>
   );
